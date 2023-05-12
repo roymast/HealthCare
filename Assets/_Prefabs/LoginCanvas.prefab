@@ -539,7 +539,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4469478363893879404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4469478364673684873}
+        m_TargetAssemblyTypeName: LoginSignUpPage, Assembly-CSharp
+        m_MethodName: ChangeSceneTo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: SignUp
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4469478364081528109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 203820413917811078, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 203820413917811078, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1299,6 +1311,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2713582240171272306, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4970566514618557843, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1309,7 +1325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970566514618557843, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4970566514618557843, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1325,7 +1341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582691408580409757, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_fontSize
-      value: 47.1
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 5582691408580409757, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_enableAutoSizing
@@ -1370,7 +1386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 203820413917811078, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 203820413917811078, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1484,6 +1500,10 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2713582240171272306, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4970566514618557843, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1494,7 +1514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4970566514618557843, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 4970566514618557843, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1514,7 +1534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582691408580409757, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_fontSize
-      value: 47.1
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 5582691408580409757, guid: dccc75322268a48479c115e15b4dd81d, type: 3}
       propertyPath: m_enableAutoSizing

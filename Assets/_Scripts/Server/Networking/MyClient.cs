@@ -32,6 +32,8 @@ namespace MyNetworking
                 SpecificDayDataReq?.Invoke(baseMessage as Messages.SpecificDayData);
             else if (baseMessage is Messages.LoginStatus)
                 LoginStatus?.Invoke((baseMessage as Messages.LoginStatus).isOk);
+            else if (baseMessage is Messages.SignUpStatus)
+                SignUpStatus?.Invoke((baseMessage as Messages.SignUpStatus).isOk);
             else
                 Debug.Log("client: Not recognised msg");
         }
@@ -45,11 +47,11 @@ namespace MyNetworking
             BaseMessage.user_name = MyName;
             return BaseMessage;
         } 
-        public void SendSignUpMsg ()
+        public void SendSignUpMsg(string name, string pass)
         {
-            CreateBaseMsg();
+            MyName = name;
             Messages.SignUpMsg signUpMsg = new Messages.SignUpMsg();
-            signUpMsg.user_password = MyName;
+            signUpMsg.user_password = pass;
             SendGenericMessage(signUpMsg);
         }
         public void SendLoginMsg (string name, string pass)

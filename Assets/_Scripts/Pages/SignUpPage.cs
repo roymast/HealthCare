@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-
-public class LoginPage : MonoBehaviour
+public class SignUpPage : MonoBehaviour
 {
     [SerializeField] MyNetworking.MyClient MyClient;
     [SerializeField] UIInput.UIInputText Name;
@@ -11,16 +11,18 @@ public class LoginPage : MonoBehaviour
 
     private void Start()
     {
-        MyClient.LoginStatus += (x) => OnLoginStatus(x);
+        MyClient.SignUpStatus += (x) => OnSignUpStatus(x);
         Name.Init("User Name");
         Pass.Init("Password");
     }
-    void OnLoginStatus(bool isLogedIn)
+    void OnSignUpStatus(bool isLogedIn)
     {
-        Debug.Log("Login status: " + isLogedIn);
+        Debug.Log("SignUp status: " + isLogedIn);
+        if (isLogedIn)
+           SceneManager.LoadScene("Main");        
     }
     public void Submit()
     {
-        MyClient.SendLoginMsg(Name.GetINput(), Pass.GetINput());
+        MyClient.SendSignUpMsg(Name.GetINput(), Pass.GetINput());
     }
 }
