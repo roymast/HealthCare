@@ -6,7 +6,8 @@ namespace MyNetworking
 {
     public class MyServer : MySocket
     {
-        [SerializeField] DataBase.MyDataBase MyDataBase;        
+        [SerializeField] DataBase.MyDataBase MyDataBase;
+        Messages.ErrorMessages ErrorMessages;
 
         public System.Action<Messages.SignUpMsg> SignUpReq;
         public System.Action<Messages.LoginMsg> LoginReq;
@@ -20,6 +21,7 @@ namespace MyNetworking
             LoginReq += (x) => HandleLoginReq(x);
             AskForDaysInsertedDataReq += (x) => HandleAskForDaysInsertedDataReq(x);
             AskForSpecificDayDataReq += (x) => HandleAskForSpecificDayDataReq(x);
+            ErrorMessages = new Messages.ErrorMessages();
         }
 
         public override void ReceiveMessgae(Messages.BaseMessage baseMessage)
@@ -38,9 +40,11 @@ namespace MyNetworking
 
         void HandleSignUpReq(Messages.SignUpMsg msg) 
         {
-            Messages.SignUpStatus statusMsg = new Messages.SignUpStatus();
+            Messages.LoginSignUpStatus statusMsg = new Messages.LoginSignUpStatus();
             statusMsg.user_name = msg.user_name;
             statusMsg.isOk = MyDataBase.TrySignUp(msg);
+            if (!statusMsg.isOk)
+                statusMsg.errorMsg = ErrorMessages.GetMsg(Messages.ErrorMessages.ErrorMsgID.TAKEN_NAME);
             NetSendMessage(statusMsg);
             Debug.Log(statusMsg.isOk ? "Yay" : "Fuck!");
 
@@ -48,9 +52,11 @@ namespace MyNetworking
         void HandleLoginReq(Messages.LoginMsg msg) 
         {
             Messages.LoginMsg dbData = MyDataBase.GetUser(msg);
-            Messages.LoginStatus loginStatus = new Messages.LoginStatus();
+            Messages.LoginSignUpStatus loginStatus = new Messages.LoginSignUpStatus();
             loginStatus.user_name = msg.user_name;
             loginStatus.isOk = (dbData != null && dbData.user_name != string.Empty);
+            if (!loginStatus.isOk)
+                loginStatus.errorMsg = ErrorMessages.GetMsg(Messages.ErrorMessages.ErrorMsgID.Incorrect);
             NetSendMessage(loginStatus);
         }
         void HandleAskForDaysInsertedDataReq(Messages.AskForDaysInsertedData msg) { Debug.Log("HandleAskForDaysInsertedDataReq: "+ msg.user_name); }

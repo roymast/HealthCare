@@ -9,16 +9,17 @@ namespace MyNetworking
         public string MyName = "roy";
         public System.Action<Messages.DaysInsertedData> DaysInsertedDataReq;
         public System.Action<Messages.SpecificDayData> SpecificDayDataReq;
-
-        public System.Action<bool> LoginStatus;
-        public System.Action<bool> SignUpStatus;
+        
+        public System.Action<Messages.LoginSignUpStatus> LoginSignUpStatus;
 
         Messages.BaseMessage BaseMessage;
+        Messages.ErrorMessages ErrorMessages;
         // Start is called before the first frame update
         void Start()
         {
             DaysInsertedDataReq += (x) => HandleDaysInsertedDataReq(x);
             SpecificDayDataReq += (x) => HandleSpecificDayDataReq(x);
+            ErrorMessages = new Messages.ErrorMessages();
         }                        
 
         public override void ReceiveMessgae(Messages.BaseMessage baseMessage)
@@ -30,10 +31,8 @@ namespace MyNetworking
                 DaysInsertedDataReq?.Invoke(baseMessage as Messages.DaysInsertedData);
             else if (baseMessage is Messages.SpecificDayData)
                 SpecificDayDataReq?.Invoke(baseMessage as Messages.SpecificDayData);
-            else if (baseMessage is Messages.LoginStatus)
-                LoginStatus?.Invoke((baseMessage as Messages.LoginStatus).isOk);
-            else if (baseMessage is Messages.SignUpStatus)
-                SignUpStatus?.Invoke((baseMessage as Messages.SignUpStatus).isOk);
+            else if (baseMessage is Messages.LoginSignUpStatus)
+                LoginSignUpStatus?.Invoke(baseMessage as Messages.LoginSignUpStatus);            
             else
                 Debug.Log("client: Not recognised msg");
         }
@@ -47,8 +46,34 @@ namespace MyNetworking
             BaseMessage.user_name = MyName;
             return BaseMessage;
         } 
+        public string CheckForNameAndPassword(string name, string pass)            
+        {
+            if (name.Length < 4)
+                return ErrorMessages.GetMsg(Messages.ErrorMessages.ErrorMsgID.NAME_ERROR);
+            if (pass.Length < 4)
+                return ErrorMessages.GetMsg(Messages.ErrorMessages.ErrorMsgID.PASS_ERROR);
+            if (name.Contains('\'') || name.Contains('\"') || pass.Contains('\'') || pass.Contains('\"'))   //sql ingection
+                return ErrorMessages.GetMsg(Messages.ErrorMessages.ErrorMsgID.Illegal);
+            else
+                return string.Empty;
+        }
+        void LoginSignUpClientError(string error)
+        {
+            Messages.LoginSignUpStatus loginSignUpStatus = new Messages.LoginSignUpStatus();
+            loginSignUpStatus.user_name = MyName;
+            loginSignUpStatus.isOk = false;
+            loginSignUpStatus.errorMsg = error;
+            LoginSignUpStatus?.Invoke(loginSignUpStatus);
+        }
         public void SendSignUpMsg(string name, string pass)
         {
+            string error = CheckForNameAndPassword(name, pass);
+            if (error != string.Empty)
+            {
+                LoginSignUpClientError(error);
+                return;
+            }
+
             MyName = name;
             Messages.SignUpMsg signUpMsg = new Messages.SignUpMsg();
             signUpMsg.user_password = pass;
@@ -56,6 +81,14 @@ namespace MyNetworking
         }
         public void SendLoginMsg (string name, string pass)
         {
+            string error = CheckForNameAndPassword(name, pass);
+            Debug.Log(error);
+            if (error != string.Empty)
+            {
+                LoginSignUpClientError(error);
+                return;
+            }
+
             MyName = name;
             Messages.LoginMsg loginMsg = new Messages.LoginMsg();            
             loginMsg.user_password = pass;

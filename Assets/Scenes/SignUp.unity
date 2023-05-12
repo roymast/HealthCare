@@ -123,6 +123,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!224 &56115088 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+  m_PrefabInstance: {fileID: 1637060718213631838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &56115093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1637060718258204875, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+  m_PrefabInstance: {fileID: 1637060718213631838}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e78b81d0c225ebd4791cebdc552824d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &94307495
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +585,103 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &1637060718213631838
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4362037259790980349}
+    m_Modifications:
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204878, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637060718258204881, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
+      propertyPath: m_Name
+      value: ErrorMsg
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 98ba8a60b909466429e1dcad70344389, type: 3}
 --- !u!114 &1743624544030305753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1643,6 +1756,7 @@ MonoBehaviour:
   MyClient: {fileID: 1235064789}
   Name: {fileID: 4165832158428302103}
   Pass: {fileID: 4165832158289461994}
+  errorText: {fileID: 56115093}
 --- !u!222 &4362037258910185824
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2343,6 +2457,7 @@ RectTransform:
   - {fileID: 4362037260195899160}
   - {fileID: 4362037259984002748}
   - {fileID: 4362037259125650980}
+  - {fileID: 56115088}
   m_Father: {fileID: 4362037258831303111}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2483,7 +2598,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4362037258831303112}
         m_TargetAssemblyTypeName: LoginSignUpPage, Assembly-CSharp
-        m_MethodName: Submit
+        m_MethodName: SendSignUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

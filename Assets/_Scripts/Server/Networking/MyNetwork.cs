@@ -28,12 +28,10 @@ namespace MyNetworking
             else if (baseMessage is Messages.DaysInsertedData)
                 msgType = "Messages.DaysInsertedData";
             else if (baseMessage is Messages.LoginMsg)
-                msgType = "Messages.LoginMsg";
-            else if (baseMessage is Messages.LoginStatus)
-                msgType = "Messages.LoginStatus";
+                msgType = "Messages.LoginMsg";            
             else if (baseMessage is Messages.SignUpMsg)
                 msgType = "Messages.SignUpMsg";
-            else if (baseMessage is Messages.SignUpStatus)
+            else if (baseMessage is Messages.LoginSignUpStatus)
                 msgType = "Messages.SignUpStatus";
             else if (baseMessage is Messages.SpecificDayData)
                 msgType = "Messages.SpecificDayData";
