@@ -8,7 +8,7 @@ namespace MyNetworking
     {
         public string MyName = "roy";
         public System.Action<Messages.DaysInsertedData> DaysInsertedDataReq;
-        public System.Action<Messages.SpecificDayData> SpecificDayDataReq;
+        public System.Action<Messages.SpecificDayData> SpecificDayDataGot;
         
         public System.Action<Messages.LoginSignUpStatus> LoginSignUpStatus;
 
@@ -18,9 +18,11 @@ namespace MyNetworking
         void Start()
         {
             DaysInsertedDataReq += (x) => HandleDaysInsertedDataReq(x);
-            SpecificDayDataReq += (x) => HandleSpecificDayDataReq(x);
+            SpecificDayDataGot += (x) => HandleSpecificDayDataGot(x);
             ErrorMessages = new Messages.ErrorMessages();
-        }                        
+            CalendarDay.OnCalendarDayClick += (dayData) => SendAskForSpecificDayData(dayData);
+            DayDataUI.OnSave += (dayData) => SendSpecificDayData(dayData);
+        }                                
 
         public override void ReceiveMessgae(Messages.BaseMessage baseMessage)
         {
@@ -30,15 +32,19 @@ namespace MyNetworking
             if (baseMessage is Messages.DaysInsertedData)
                 DaysInsertedDataReq?.Invoke(baseMessage as Messages.DaysInsertedData);
             else if (baseMessage is Messages.SpecificDayData)
-                SpecificDayDataReq?.Invoke(baseMessage as Messages.SpecificDayData);
+                SpecificDayDataGot?.Invoke(baseMessage as Messages.SpecificDayData);
             else if (baseMessage is Messages.LoginSignUpStatus)
-                LoginSignUpStatus?.Invoke(baseMessage as Messages.LoginSignUpStatus);            
+                LoginSignUpStatus?.Invoke(baseMessage as Messages.LoginSignUpStatus);
+
             else
                 Debug.Log("client: Not recognised msg");
         }
 
         void HandleDaysInsertedDataReq(Messages.DaysInsertedData daysInsertedDataMsg) { Debug.Log("HandleDaysInsertedDataReq"); }
-        void HandleSpecificDayDataReq(Messages.SpecificDayData specificDayDataMsg) { Debug.Log("HandleSpecificDayDataReq"); }
+        void HandleSpecificDayDataGot(Messages.SpecificDayData specificDayDataMsg) 
+        { 
+            Debug.Log($"HandleSpecificDayDataReq: {specificDayDataMsg.DayData.ToSring()}"); 
+        }
 
         public Messages.BaseMessage CreateBaseMsg()
         {
@@ -95,15 +101,23 @@ namespace MyNetworking
             SendGenericMessage(loginMsg);
         }
         public void SendAskForDaysInsertedData ()
-        {
-            CreateBaseMsg();
+        {            
             Messages.AskForDaysInsertedData msg = new Messages.AskForDaysInsertedData();
             SendGenericMessage(msg);
         }
-        public void SendAskForSpecificDayData ()
-        {            
-            CreateBaseMsg();
+        public void SendAskForSpecificDayData (DayData dayData)
+        {                        
             Messages.AskForSpecificDayData msg = new Messages.AskForSpecificDayData();
+            msg.day = dayData.day;
+            msg.month = dayData.month;
+            msg.year = dayData.year;
+            SendGenericMessage(msg);
+        }
+
+        public void SendSpecificDayData(DayData dayData)
+        {
+            Messages.SpecificDayData msg = new Messages.SpecificDayData();
+            msg.DayData = dayData;
             SendGenericMessage(msg);
         }
         public void SendGenericMessage(Messages.BaseMessage message)

@@ -6,6 +6,9 @@ using UnityEngine;
 public class Calendar : MonoBehaviour
 {     
     public static Calendar Instance;
+    public DayDataUI DayDataUI;
+    public GameObject CalendarCanvas;
+    public GameObject DayCanvas;
     public MonthCreator MonthCreator;
     int currentYear;
     int currentMonth;
@@ -21,7 +24,19 @@ public class Calendar : MonoBehaviour
     {
         currentYear = DateTime.Now.Year;
         currentMonth = DateTime.Now.Month;
+        CalendarDay.OnCalendarDayClick += (x) => ToggleFullCalendarWithDay();
+        CalendarDay.OnCalendarDayClick += (x) => SetDataForDayDataUI(x);
+        DayDataUI.OnSave += (x) => ToggleFullCalendarWithDay();
         UpdateCal();
+    }
+    void SetDataForDayDataUI(DayData dayData)
+    {
+        DayDataUI.SetData(dayData);
+    }
+    void ToggleFullCalendarWithDay()
+    {
+        CalendarCanvas.SetActive(!CalendarCanvas.activeInHierarchy);
+        DayCanvas.SetActive(!CalendarCanvas.activeInHierarchy);
     }
     void UpdateCal()
     {

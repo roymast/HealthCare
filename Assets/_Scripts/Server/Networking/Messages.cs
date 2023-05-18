@@ -62,30 +62,27 @@ namespace MyNetworking
         #region DaysInserted
         public class DaysInsertedData : BaseMessage
         {
-            int year;
-            int month;
-            List<int> daysInserted;
+            public int year;
+            public int month;
+            public List<int> daysInserted;
         }
         public class AskForDaysInsertedData : BaseMessage
         {
-            int year;
-            int month;
+            public int year;
+            public int month;
         }
         #endregion
 
         #region SpecificDayData
         public class SpecificDayData : BaseMessage
-        {
-            int year;
-            int month;
-            int day;
-            DayData DayData;
+        {            
+            public DayData DayData;            
         }
         public class AskForSpecificDayData : BaseMessage
         {
-            int year;
-            int month;
-            int day;
+            public int year;
+            public int month;
+            public int day;
         }
         #endregion
     }

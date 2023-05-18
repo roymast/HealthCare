@@ -4,12 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Events;
 
 public class CalendarDay : MonoBehaviour
 {
+    public static System.Action<DayData> OnCalendarDayClick;
     [SerializeField] TextMeshProUGUI DayLabel;
     [SerializeField] Button DayButton;
     [SerializeField] Image DayImage;
+    DayData dayData;
 
     public void InitDay(int day, DayData dayData, bool isToday=false)
     {
@@ -26,6 +29,13 @@ public class CalendarDay : MonoBehaviour
             DayImage.color = Color.green;
         else
             DayImage.color = Color.white;
+        this.dayData = dayData;
+        DayButton.onClick.AddListener(OnClickEvent);
+    }
+
+    void OnClickEvent()
+    {
+        OnCalendarDayClick?.Invoke(dayData);
     }
 
     void FillNullDay()

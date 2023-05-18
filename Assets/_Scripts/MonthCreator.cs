@@ -44,7 +44,7 @@ public class MonthCreator : MonoBehaviour
             GameObject currentWeek = Instantiate(WeekTemplate, transform);
             for (int d = 0; d < 7; d++)
             {
-                DayData dayData = new DayData();
+                DayData dayData = new DayData(year, month, day);
                 CalendarDay calendarDay = Instantiate(CalendarDayTemplate, currentWeek.transform);
                 int currDay = w * 7 + d;
                 bool isToday = CheckIsToday(year, month, currDay);
@@ -87,7 +87,7 @@ public class MonthCreator : MonoBehaviour
     }
     void UpdateDay(DayData currentDay, CalendarDay calendarDay, int dayNum, bool isToday = false)
     {
-        currentDay.SetData(dayNum);
+        currentDay.UpdateDayData(currentDay);
         calendarDay.InitDay(dayNum, currentDay, isToday);
     }
 }

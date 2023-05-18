@@ -5,8 +5,10 @@ using TMPro;
 
 namespace UIInput
 {
-    public class UIInputCounter : MonoBehaviour, UIInput
+    [System.Serializable]
+    public class UIInputCounter : UIInput
     {
+        [SerializeField] TextMeshProUGUI _label;
         [SerializeField] TMP_InputField CountText;
         [SerializeField] int _characterLimits = 4;
         int count;
@@ -40,9 +42,20 @@ namespace UIInput
             CountText.text = count.ToString();
         }
 
-        public string GetINput()
+        public override string GetINput()
         {
             return count.ToString();
+        }
+
+        public override void SetInput(string input)
+        {
+            CountText.text = input;            
+            OnSet();
+        }
+
+        public override void SetLabel(string label)
+        {
+            _label.text = label;
         }
     }
 }

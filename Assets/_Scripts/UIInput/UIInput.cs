@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace UIInput
 {
-    public interface UIInput
+    public abstract class UIInput : MonoBehaviour
     {
-        public string GetINput();
+        public abstract string GetINput();
+        public abstract void SetInput(string input);
+        public abstract void SetLabel(string label);
     }
 }
